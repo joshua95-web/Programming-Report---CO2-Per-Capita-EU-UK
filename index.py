@@ -11,7 +11,10 @@ eu_countries = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Republic of Cyprus
 eu_df = df[df['Country Name'].isin(eu_countries)]
 eu_df.to_csv('eu_countries.csv')
 #%%
+
+# Find CSV of UK countries CO2 emissions per capita
 import pandas as pd
+
 
 
 # use pandas to group data into useful categories
