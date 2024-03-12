@@ -1,9 +1,15 @@
-with open("CO2_Dataset.csv") as dataset:
-    CO2Data = dataset.read()
+import pandas as pd
 
-print(CO2Data)
+df = pd.read_csv('CO2_Dataset.csv')
 
-# filter out EU countries with for loop
+
+# filter out EU countries as per list of EU countries (UK Government, 2014)
+
+
+eu_countries = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Republic of Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden']
+eu_df = df[df['Country Name'].isin(eu_countries)]
+eu_df.to_csv('eu_countries.csv')
+
 # filter out UK countries with for loop
 # catalogue these in a new file
 
