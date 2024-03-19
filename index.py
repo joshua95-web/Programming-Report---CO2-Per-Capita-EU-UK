@@ -40,9 +40,17 @@ co2_per_year = df_co2.select_dtypes(include=['number'])
 
 average_co2_per_year = co2_per_year.mean()
 
-# get rid of empty columns
+# cut out empty columns
 
-print(average_co2_per_year)
+average_co2_per_year_filtered = average_co2_per_year['1990':].drop(['2021', '2022'])
+
+# put this set of averages into a new dataframe
+
+df_year_average_co2 = pd.DataFrame(average_co2_per_year_filtered)
+
+#plot this dataframe onto a graph
+
+df_year_average_co2.plot(kind='line', title='Average CO2 Emissions per Year in UK and EU countries', xlabel='Year', ylabel='Average CO2 Emissions (kt)')
 
 
 
