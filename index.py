@@ -51,8 +51,6 @@ df_year_average_co2 = pd.DataFrame(average_co2_per_year_filtered)
 
 #plot this dataframe onto a graph
 
-#df_year_average_co2.plot(kind='line', title='Average CO2 Emissions per Year in UK and EU countries', xlabel='Year', ylabel='Average CO2 Emissions (kt)', legend=False, color='red')
-
 plt.figure(figsize=(25, 15))
 plt.plot(df_year_average_co2.index, df_year_average_co2[0], color='red', marker='o', linestyle='-')
 plt.title('Average CO2 Emissions per Year in UK and EU countries')
@@ -63,3 +61,5 @@ plt.show()
 
 
 # %%
+
+
