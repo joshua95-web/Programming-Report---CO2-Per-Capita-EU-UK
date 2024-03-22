@@ -22,6 +22,7 @@ eu_UK_df.to_csv('eu_and_UK_countries.csv')
 # import pandas again
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # set display options to show all columns and rows
 
@@ -50,8 +51,15 @@ df_year_average_co2 = pd.DataFrame(average_co2_per_year_filtered)
 
 #plot this dataframe onto a graph
 
-df_year_average_co2.plot(kind='line', title='Average CO2 Emissions per Year in UK and EU countries', xlabel='Year', ylabel='Average CO2 Emissions (kt)', legend=False, color='red')
+#df_year_average_co2.plot(kind='line', title='Average CO2 Emissions per Year in UK and EU countries', xlabel='Year', ylabel='Average CO2 Emissions (kt)', legend=False, color='red')
 
+plt.figure(figsize=(20, 10))
+plt.plot(df_year_average_co2.index, df_year_average_co2[0], color='red', marker='o', linestyle='-')
+plt.title('Average CO2 Emissions per Year in UK and EU countries')
+plt.xlabel('Year')
+plt.ylabel('Average CO2 Emissions (kt)')
+plt.grid(True)
+plt.show()
 
 
 # %%
