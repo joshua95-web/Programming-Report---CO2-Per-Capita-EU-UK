@@ -19,7 +19,7 @@ eu_UK_df.to_csv('eu_and_UK_countries.csv')
 
 # Get an average of each year column and plot that as an overall trend
 
-# import pandas again
+# import pandas and matplotlib.pyplot for this cell
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -53,7 +53,7 @@ df_year_average_co2 = pd.DataFrame(average_co2_per_year_filtered)
 
 #df_year_average_co2.plot(kind='line', title='Average CO2 Emissions per Year in UK and EU countries', xlabel='Year', ylabel='Average CO2 Emissions (kt)', legend=False, color='red')
 
-plt.figure(figsize=(20, 10))
+plt.figure(figsize=(25, 15))
 plt.plot(df_year_average_co2.index, df_year_average_co2[0], color='red', marker='o', linestyle='-')
 plt.title('Average CO2 Emissions per Year in UK and EU countries')
 plt.xlabel('Year')
