@@ -62,4 +62,29 @@ plt.show()
 
 # %%
 
+# predicting trends for 2050 with linear regression
+
+# import pandas, numpy and matplotlib.pyplot for this cell
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# import sklearn for linear regression
+
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+
+# put CO2 data into a pandas dataframe
+
+df_co2 = pd.read_csv('eu_and_UK_countries.csv')
+
+# extract input variables
+
+x = df.values[:]
+
+# extract output variables
+
+y = df.values[:]
+
 
