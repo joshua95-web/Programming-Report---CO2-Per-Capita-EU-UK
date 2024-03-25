@@ -24,12 +24,6 @@ eu_UK_df.to_csv('eu_and_UK_countries.csv')
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#import sklearn and numpy for linear regression
-
-import numpy as np
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score
-
 # set display options to show all columns and rows
 
 pd.set_option('display.max_columns', None)
@@ -62,8 +56,11 @@ plt.plot(df_year_average_co2.index, df_year_average_co2[0], color='red', marker=
 plt.title('Average CO2 Emissions per Year in UK and EU countries')
 plt.xlabel('Year')
 plt.ylabel('Average CO2 Emissions (kt)')
+# make sure Y axis starts from 0
+plt.ylim(0)
 plt.grid(True)
 plt.show()
+
 
 
 # %%
