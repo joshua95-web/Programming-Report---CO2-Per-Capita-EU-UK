@@ -117,15 +117,27 @@ yp2 = m * xp2 + c
 
 R_sq = r2_score(y, yp1) # R squared value
 
+# calculating and defining the maximum emissions to ensure highest number is shown on graph
+
+max_co2_emissions = df_year_average_co2.max()[0]
+
+y_axis_limit = max_co2_emissions + 5 
+
 #put a label of this onto the graph
 
 #s = '$\mathregular{R^{2}}$ = ' + str(round(R_sq, 3))
 #s += '\n y={0}'.format(m) + 'x+{0}'.format(c)
 
+
+plt.figure(figsize=(17, 10))
 plt.plot(x, y, color='red', marker='o', linestyle='-', label='CO2 Emissions')
 plt.plot(xp2, yp2, 'r-', color='blue', label='Linear Regression')
-plt.ylim(0)
+plt.title('Average CO2 Emissions per Year in UK and EU countries')
+plt.xlabel('Year')
+plt.ylabel('Average CO2 Emissions (kt)')
+plt.ylim(0, y_axis_limit)
 plt.grid(True)
+plt.legend()
 plt.show()
 
 
