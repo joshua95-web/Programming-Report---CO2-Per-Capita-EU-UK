@@ -57,13 +57,15 @@ y_axis_limit = max_co2_emissions + 0.7
 
 #plot this dataframe onto a graph
 
-plt.figure(figsize=(20, 12))
+plt.figure(figsize=(25, 12))
 plt.plot(df_year_average_co2.index, df_year_average_co2[0], color='red', marker='o', linestyle='-')
 plt.title('Average CO2 Emissions per Year in UK and EU countries')
 plt.xlabel('Year')
 plt.ylabel('Average CO2 Emissions (kt)')
 # make sure Y axis starts from 0
+plt.xticks(rotation='vertical')
 plt.ylim(0, y_axis_limit)
+plt.tick_params(axis='y', labelsize=20)
 plt.grid(True)
 plt.show()
 
@@ -117,23 +119,17 @@ c = round(fit.intercept_.flatten()[0], 6)
 
 yp1 = m * x + c
 
+# create a linear regression model for the future, spacing out the lines to 2050
+
 xp2 = np.linspace(2021, 2050, 29)
 
 yp2 = m * xp2 + c
-
-R_sq = r2_score(y, yp1) # R squared value
 
 # calculating and defining the maximum emissions to ensure highest number is shown on graph
 
 max_co2_emissions = df_year_average_co2.max()[0]
 
 y_axis_limit = max_co2_emissions + 0.7
-
-#put a label of this onto the graph
-
-#s = '$\mathregular{R^{2}}$ = ' + str(round(R_sq, 3))
-#s += '\n y={0}'.format(m) + 'x+{0}'.format(c)
-
 
 plt.figure(figsize=(12, 10))
 plt.plot(x, y, color='red', marker='o', linestyle='-', label='CO2 Emissions')
@@ -143,6 +139,7 @@ plt.xlabel('Year')
 plt.ylabel('Average CO2 Emissions (kt)')
 plt.ylim(0, y_axis_limit)
 plt.grid(True)
+plt.xticks(rotation='vertical')
 plt.legend()
 plt.show()
 
