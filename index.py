@@ -65,18 +65,14 @@ plt.show()
 
 # %%
 
-# predicting trends for 2050 with linear regression
 
-# import pandas, numpy and matplotlib.pyplot for this cell
+# import pandas and matplotlib.pyplot for this cell, as well as sklearn for linear regression
 
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-
-# import sklearn for linear regression
-
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
+import numpy as np
 
 # set display options to show all columns and rows
 
@@ -103,24 +99,35 @@ average_co2_per_year_filtered = average_co2_per_year['1990':].drop(['2021', '202
 
 df_year_average_co2 = pd.DataFrame(average_co2_per_year_filtered)
 
-#plot this dataframe onto a graph
+# create a linear regression model
 
-plt.figure(figsize=(25, 15))
-plt.plot(df_year_average_co2.index, df_year_average_co2[0], color='red', marker='o', linestyle='-')
-plt.title('Average CO2 Emissions per Year in UK and EU countries')
-plt.xlabel('Year')
-plt.ylabel('Average CO2 Emissions (kt)')
+x = df_year_average_co2.index.values.reshape(-1, 1).astype(float)
+y = df_year_average_co2[0].values.reshape(-1, 1).astype(float)
+
+fit = LinearRegression().fit(x, y)
+
+m = round(fit.coef_.flatten()[0], 6)
+c = round(fit.intercept_.flatten()[0], 6)
+
+yp1 = m * x + c
+
+xp2 = np.linspace(2021, 2050, 29)
+
+yp2 = m * xp2 + c
+
+R_sq = r2_score(y, yp1) # R squared value
+
+#put a label of this onto the graph
+
+#s = '$\mathregular{R^{2}}$ = ' + str(round(R_sq, 3))
+#s += '\n y={0}'.format(m) + 'x+{0}'.format(c)
+
+plt.plot(x, y, color='red', marker='o', linestyle='-', label='CO2 Emissions')
+plt.plot(xp2, yp2, 'r-', color='blue', label='Linear Regression')
+plt.ylim(0)
 plt.grid(True)
 plt.show()
 
-# create linear regression model and fit it to the data
-
-fit = LinearRegression().fit(np.array(df_year_average_co2.index).reshape(-1, 1), df_year_average_co2[0])
-
-
-
-
-
-
 
 # %%
+
