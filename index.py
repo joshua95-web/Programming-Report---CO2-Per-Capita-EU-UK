@@ -49,15 +49,21 @@ average_co2_per_year_filtered = average_co2_per_year['1990':].drop(['2021', '202
 
 df_year_average_co2 = pd.DataFrame(average_co2_per_year_filtered)
 
+# calculating and defining the maximum emissions to ensure highest number is shown on graph
+
+max_co2_emissions = df_year_average_co2.max()[0]
+
+y_axis_limit = max_co2_emissions + 0.7
+
 #plot this dataframe onto a graph
 
-plt.figure(figsize=(25, 15))
+plt.figure(figsize=(20, 12))
 plt.plot(df_year_average_co2.index, df_year_average_co2[0], color='red', marker='o', linestyle='-')
 plt.title('Average CO2 Emissions per Year in UK and EU countries')
 plt.xlabel('Year')
 plt.ylabel('Average CO2 Emissions (kt)')
 # make sure Y axis starts from 0
-plt.ylim(0)
+plt.ylim(0, y_axis_limit)
 plt.grid(True)
 plt.show()
 
